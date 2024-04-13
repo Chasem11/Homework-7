@@ -1,3 +1,5 @@
+// src/components/CrewmateGallery.jsx
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../Client';
@@ -20,15 +22,20 @@ function CrewmateGallery() {
     }
   };
 
+  const getGlowStyle = (color) => ({
+    boxShadow: `0 0 10px 3px ${color}`,
+  });
+
   return (
     <div className="gallery">
       {crewmates.map((crewmate) => (
-        <div className="card" key={crewmate.id}>
-          <h3>Name of Crewmate: {crewmate.Name}</h3>
-          <p>Speed of Crewmate: {crewmate.Speed} mph</p>
-          <p>Color of Crewmate: {crewmate.Color}</p>
+        <div className="card" key={crewmate.id} style={getGlowStyle(crewmate.Color)}>
+          <img src="https://fraternitysororitysvg.com/assets/images/products/Among-Us-Svg.png" alt="Crewmate"/>
+          <h3>Name: {crewmate.Name}</h3>
+          <p>Speed: {crewmate.Speed} mph</p>
+          <p>Color: {crewmate.Color}</p>
           <Link to={`/crewmate/${crewmate.id}`} className="edit-button">
-            Edit Crewmate
+            View Details
           </Link>
         </div>
       ))}
