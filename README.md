@@ -2,7 +2,10 @@
 
 Submitted by: **Chase Moffat**
 
-This web app: **insert description**
+This web app: My web app functions as a dashboard so users can add/edit crewmates. My app opens up to the home page, from there users can use the navbar at the top to navigate
+to the diffrent pages. Users can navigate to the addCrewmate page. Here you can input the crewmwates name, choose their color from a list, and enter their speed. The other page users
+can go to it the gallery. Here users can see all of the crewmates that have been added. If you click on a crewmate you are taken to the details page. Here you can view the crewmates stats,
+update values for the crewmate, and delete the crewmate.
 
 Time spent: **5** hours spent in total
 
@@ -31,7 +34,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](https://github.com/COP4808-Spring2024-Full-Stack-Webdev/hw7-Chasem11/Crewmates/main/src/assets/project7.gif)
+![Video Walkthrough][https://github.com/COP4808-Spring2024-Full-Stack-Webdev/hw7-Chasem11/Crewmates/main/src/assets/project7.gif](https://github.com/COP4808-Spring2024-Full-Stack-Webdev/hw7-Chasem11/blob/main/Crewmates/src/assets/project7.gif)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
