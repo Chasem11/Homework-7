@@ -13,18 +13,19 @@ function AddCrewmate() {
     const { data, error } = await supabase
       .from('crewmates')
       .insert([{ Name, Color, Speed: parseFloat(Speed) }]);
-    if (error) console.log('Error:', error);
-    else {
+    if (error) {
+      console.log('Error:', error);
+    } else {
       console.log('Crewmate added:', data);
-      navigate('/');  // Redirect to the home page after adding
+      navigate('/'); 
     }
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>Add New Crewmate</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} className="crewmate-form">
+        <div className="input-group">
           <label>Name:</label>
           <input
             type="text"
@@ -33,16 +34,19 @@ function AddCrewmate() {
             required
           />
         </div>
-        <div>
+        <div className="input-group">
           <label>Color:</label>
-          <input
-            type="text"
-            value={Color}
-            onChange={e => setColor(e.target.value)}
-            required
-          />
+          <select value={Color} onChange={e => setColor(e.target.value)} required>
+            <option value="">Select Color</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Purple">Purple</option>
+            <option value="Orange">Orange</option>
+          </select>
         </div>
-        <div>
+        <div className="input-group">
           <label>Speed:</label>
           <input
             type="number"
@@ -51,7 +55,7 @@ function AddCrewmate() {
             required
           />
         </div>
-        <button type="submit">Add Crewmate</button>
+        <button type="submit" className="submit-button">Add Crewmate</button>
       </form>
     </div>
   );

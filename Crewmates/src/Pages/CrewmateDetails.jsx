@@ -30,13 +30,13 @@ function CrewmateDetails() {
   const handleUpdate = async () => {
     const { data, error } = await supabase
       .from('crewmates')
-      .update({ Name: crewmate.Name, Color: crewmate.Color, Speed: crewmate.Speed })
+      .update({ Name: crewmate.Name, Color: crewmate.Color, Speed: parseFloat(crewmate.Speed) })
       .match({ id });
     if (error) {
       console.log('Error updating crewmate', error);
     } else {
       console.log('Crewmate updated:', data);
-      navigate('/gallery');  // Redirect to the gallery after update
+      navigate('/gallery');
     }
   };
 
@@ -48,37 +48,48 @@ function CrewmateDetails() {
     if (error) {
       console.log('Error deleting crewmate', error);
     } else {
-      navigate('/gallery');  // Redirect to the gallery after deletion
+      navigate('/gallery');
     }
   };
 
   const handleChange = (e) => {
-    const { Name, value } = e.target;
-    setCrewmate({ ...crewmate, [Name]: value });
+    const { name, value } = e.target;
+    setCrewmate({ ...crewmate, [name]: value });
   };
 
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="crewmate-details">
       <h1>Crewmate Details</h1>
-      <div>
+      <p>This is {crewmate.Name}! His color is {crewmate.Color}. He also has a speed of {crewmate.Speed}. Make any changes you like and don't forget to save!</p>
+      <div className="form">
         <label>Name:</label>
         <input type="text" name="Name" value={crewmate.Name} onChange={handleChange} />
 
         <label>Color:</label>
-        <input type="text" name="Color" value={crewmate.Color} onChange={handleChange} />
+        <select name="Color" value={crewmate.Color} onChange={handleChange}>
+          <option value="">Select Color</option>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+          <option value="Green">Green</option>
+          <option value="Yellow">Yellow</option>
+          <option value="Purple">Purple</option>
+          <option value="Orange">Orange</option>
+        </select>
 
         <label>Speed:</label>
         <input type="number" name="Speed" value={crewmate.Speed} onChange={handleChange} />
-
-        <button onClick={handleUpdate}>Update Crewmate</button>
-        <button onClick={handleDelete}>Delete Crewmate</button>
-        <button onClick={() => navigate(-1)}>Go Back</button>
+      </div>
+      <div className="buttons">
+        <button className="update-button" onClick={handleUpdate}>Update Crewmate</button>
+        <button className="delete-button" onClick={handleDelete}>Delete Crewmate</button>
+        <button className="back-button" onClick={() => navigate(-1)}>Go Back</button>
       </div>
     </div>
   );
 }
 
 export default CrewmateDetails;
+
 
